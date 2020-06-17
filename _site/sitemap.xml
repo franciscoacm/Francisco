@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/productive-laziness-optimize-your-shell-workflow</loc>
+<lastmod>2018-02-01T22:10:10+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/setup-multiple-domains-with-free-ssl-from-cloudflare</loc>
+<lastmod>2018-02-01T22:10:10+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/jekyll-seo-template-readme</loc>
+<lastmod>2018-02-01T22:10:10+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/about</loc>
+<lastmod>2018-02-09T20:10:10+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/contact</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/jekyll-seo-template</loc>
+</url>
+<url>
+<loc>http://localhost:4000/programming-blogpost-promotion</loc>
+<lastmod>2018-02-09T20:10:10+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/terms</loc>
+<lastmod>2018-02-09T20:10:10+01:00</lastmod>
+</url>
+</urlset>

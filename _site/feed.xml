@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paweł U. | Ruby on Rails Web Development, Consultant Full Stack Blog</title>
+    <description>Paweł Urbanek - Full Stack web development, consultant, specializing in Ruby on Rails and JavaScript. Experienced in building scalable and performant APIs for startups and refactoring legacy codebases. Blogging about web developer stuff.</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>jekyll SEO Template Tutorial</title>
+        <description>&lt;p&gt;Thanks for your interest in jekyll SEO template. In this post, I will cover things which differ this template from standard jekyll templates and describe SEO techniques which I implemented into it.&lt;/p&gt;
+
+&lt;p&gt;To learn how use jekyll you should check out &lt;a href=&quot;https://jekyllrb.com/&quot; target=&quot;_blank&quot;&gt;the documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-post-metadata&quot;&gt;Configure post metadata:&lt;/h2&gt;
+
+&lt;p&gt;Each post should have the following data set:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;layout: post
+title:
+head_title:
+date:
+summary:
+last_modified_at:
+preview_image:
+thumb_image
+keywords:&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I added the following non-standard data fields to this template:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;head_title&lt;/code&gt; - it will be displayed in a &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;title&amp;gt;&lt;/code&gt; tag of a blog page. This is a title that users will see when they find your page in Google search results. It can be different than the &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;, it is a great place to input the keywords you are targeting.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;preview_image&lt;/code&gt; - this image will be displayed as a thumbnail of a post Open Graph and Twitter meta tags. The image is preprocessed using &lt;a href=&quot;https://github.com/envygeeks/jekyll-assets&quot; target=&quot;_blank&quot;&gt;jekyll-assets gem&lt;/a&gt;. One caveat is that if you don’t use preview image anywhere in the post it’s preprocessed version will not be prepared. To avoid this problem you need to display hidden version of an image somewhere on your blog. Check out &lt;code class=&quot;highlighter-rouge&quot;&gt;pages/render-images.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;It will not be an issue if you use a preview image somewhere in your post.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;thumb_image&lt;/code&gt; - smaller version of the main image, it will be dispalyed before original version is loaded&lt;/p&gt;
+
+&lt;p&gt;Preview image needs to be exactly &lt;code class=&quot;highlighter-rouge&quot;&gt;800x500px&lt;/code&gt; because dimensions data has to be provided in both Open Graph tags and Structured Data. You can change it if you like but I find this size optimal for my images.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;keywords&lt;/code&gt; - keywords are said to have SEO minimal impact in the meta tag. I use them also for Structured Data so it won’t hurt to add them.&lt;/p&gt;
+
+&lt;p&gt;This template contains 2 of my real blog posts, please consult their source files if something is unclear.&lt;/p&gt;
+
+&lt;h2 id=&quot;lower-head&quot;&gt;Lower head&lt;/h2&gt;
+
+&lt;p&gt;I improved the rendering speed by moving fetching blocking resources below the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&lt;/code&gt; tag. You can check out &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/lower_head.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;image-preprocessing&quot;&gt;Image preprocessing&lt;/h2&gt;
+
+&lt;p&gt;Image preprocessing adds a digest tag to each image. It allows you to leverage browser caching and improve page speed ranking. Check out  &lt;a href=&quot;https://github.com/envygeeks/jekyll-assets&quot; target=&quot;_blank&quot;&gt;jekyll-assets gem&lt;/a&gt; for documentation on how to use it.&lt;/p&gt;
+
+&lt;h2 id=&quot;permalink&quot;&gt;Permalink&lt;/h2&gt;
+
+&lt;p&gt;Contrary to default jekyll setting, posts use only their filename title as an URL. There are studies which confirm that Google favors shorter URLs.&lt;/p&gt;
+
+&lt;h2 id=&quot;structured-data&quot;&gt;Structured Data&lt;/h2&gt;
+
+&lt;p&gt;Together with Structured Data allows your website to appear in Google’s featured snippets and Chrome’s recommended articles.&lt;/p&gt;
+
+&lt;p&gt;You can check out &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/schema.html&lt;/code&gt; to see how I setup structured data.&lt;/p&gt;
+
+&lt;p&gt;To generate a correct &lt;code class=&quot;highlighter-rouge&quot;&gt;BlogPosting&lt;/code&gt; entry you need to provide a publisher image with size exactly &lt;code class=&quot;highlighter-rouge&quot;&gt;600x60&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;publisher.jpg&lt;/code&gt; image is in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_assets/shared&lt;/code&gt; folder. You should change it to represent your brand.&lt;/p&gt;
+
+&lt;h2 id=&quot;styling&quot;&gt;Styling&lt;/h2&gt;
+
+&lt;p&gt;You can find my custom CSS in &lt;code class=&quot;highlighter-rouge&quot;&gt;css/styles.scss&lt;/code&gt; file. You can change &lt;code class=&quot;highlighter-rouge&quot;&gt;$theme-color&lt;/code&gt; variable to change the main color.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;You can also consult &lt;a href=&quot;https://pawelurbanek.com/2018/02/16/seo-tips-for-technical-bloggers-and-programming-blogs-in-2018/&quot; target=&quot;_blank&quot;&gt;my blog post about SEO tips for blogs&lt;/a&gt; and &lt;a href=&quot;https://pawelurbanek.com/amp-seo-rating-performance&quot; target=&quot;_blank&quot;&gt;removing AMP&lt;/a&gt; where I describe some of those techniques.&lt;/p&gt;
+
+&lt;p&gt;Once again thanks for your interest in the template. I am open to suggestions on what could be improved in the codes of the template and this tutorial.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 23 Feb 2018 10:00:00 +0100</pubDate>
+        <link>http://localhost:4000/jekyll-seo-template-readme</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-seo-template-readme</guid>
+      </item>
+    
+      <item>
+        <title>Multiple Domains with Free Wildcard SSL from Cloudflare</title>
+        <description>&lt;p&gt;Domain names you own could be your most expensive to do list. What’s more a domain without a valid SSL will show up in all modern browsers as an insecure content. In this blog post, I will explain how to minimize the cost of owning multiple wildcard SSL-protected domains using Cloudflare and set them up with Github Pages, Heroku or NGINX.&lt;/p&gt;
+
+&lt;p&gt;After I did not renew yet another domain for one of my &lt;em&gt;not-so-profitable-yet&lt;/em&gt; side projects I decided to change a strategy. Now I am hosting most of my projects on subdomains of one root domain: &lt;a href=&quot;https://apki.io&quot; target=&quot;_blank&quot;&gt;apki.io&lt;/a&gt;. I’ve used it for a couple of projects so far:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://abot.apki.io&quot; target=&quot;_blank&quot;&gt;https://abot.apki.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://wishlist.apki.io&quot; target=&quot;_blank&quot;&gt;https://wishlist.apki.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://selfcontrol.apki.io&quot; target=&quot;_blank&quot;&gt;https://selfcontrol.apki.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://focus.apki.io/&quot; target=&quot;_blank&quot;&gt;https://focus.apki.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://tracky.apki.io/&quot; target=&quot;_blank&quot;&gt;https://tracky.apki.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;My only cost is the yearly renewal of the root domain. Each of these sites has a grade A SSL which works in all the browsers. Here’s how you can do it:&lt;/p&gt;
+
+&lt;h2 id=&quot;buy-a-root-domain&quot;&gt;Buy a “root” domain&lt;/h2&gt;
+
+&lt;p&gt;I usually use &lt;a href=&quot;https://www.gandi.net/&quot; target=&quot;_blank&quot;&gt;Gandi&lt;/a&gt; but it does not really matter which provider you choose. There are plenty of tutorials explaining how to buy a domain so I will not elaborate on that.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-cloudflare-and-free-ssl-certificate&quot;&gt;Setup Cloudflare and free SSL certificate&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cloudflare.com/&quot; target=&quot;_blank&quot;&gt;Cloudflare&lt;/a&gt; is a great service providing tons of features ranging from DDOS protection to smart caching and more. We will focus on how to use it to configure free SSL.&lt;/p&gt;
+
+&lt;p&gt;First, you need to move your domain’s nameservers to Cloudflare. After adding a domain to your Cloudflare panel you will be able to check if new config has already propagated. Keep in mind that it can take up to 24 hours.&lt;/p&gt;
+
+&lt;p&gt;Next, you need to issue a Cloudflare SSL certificate for your domain. They provide a free wildcard certificate. You can do it in a &lt;code class=&quot;highlighter-rouge&quot;&gt;Crypto&lt;/code&gt; tab bar:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;center-image&quot; alt=&quot;Cloudflare free wildcard SSL was issued&quot; src=&quot;/assets/cloudflare_ssl-40256cd99a4efcb0ffe9677df08a69fb159cc2e2507c5029dbd3a703ebb77277.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;annotation&quot;&gt;In case that after 24 hours they are still “Authorizing Certificate” you should contact support.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-github-pages&quot;&gt;Setup Github Pages&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot;&gt;Github Pages&lt;/a&gt; is a popular solution for hosting static pages. This blog itself is placed there and powered by &lt;a href=&quot;https://jekyllrb.com/&quot; target=&quot;_blank&quot;&gt;Jekyll&lt;/a&gt;. It is free as long as you are using a public GitHub repo. Out of the box, it provides an &lt;code class=&quot;highlighter-rouge&quot;&gt;https://[Your username].github.io&lt;/code&gt; domain for you, however with a minimal configuration you can setup your own domain for free.&lt;/p&gt;
+
+&lt;p&gt;First, you need to change your DNS config to point to GitHub’s IP (&lt;code class=&quot;highlighter-rouge&quot;&gt;192.30.252.154&lt;/code&gt;) using an A record. You can do it in Cloudflare DNS settings:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;center-image&quot; alt=&quot;DNS A config in Cloudflare panel&quot; src=&quot;/assets/dns_a_config-25e0e85cda78fc35a3e0b2fd081b6c92f922c9c4773b0d8de18dd41d38de18b0.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;then in your project settings on GitHub, you should add a custom domain name:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;center-image&quot; alt=&quot;GitHub settings, setup custom domain with no cost SSL&quot; src=&quot;/assets/github_settings-a5d06af41dcea16bb5d38de48180ff7d164f3ade32aad1582dfcc74beccaee89.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s it, your website should be up running.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-heroku&quot;&gt;Setup Heroku&lt;/h2&gt;
+
+&lt;p&gt;If you need something more complex than a static page then &lt;a href=&quot;https://heroku.com/&quot; target=&quot;_blank&quot;&gt;Heroku&lt;/a&gt; could be a thing for you. By default, it offers an &lt;code class=&quot;highlighter-rouge&quot;&gt;https://[Your app name].herokuapp.com&lt;/code&gt; domain. Same as with GitHub pages you can hook your own domain with SSL without any additional costs.&lt;/p&gt;
+
+&lt;p&gt;Start with adding your domain name in Heroku’s app settings:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;center-image&quot; alt=&quot;Heroku settings, setup custom domain with free SSL&quot; src=&quot;/assets/heroku_domain-8bc1696ee1bb65057ba42134a0aeb1d6db380438c4b535a586f9de3b9b55fb6e.png&quot; /&gt;
+&lt;span class=&quot;annotation&quot;&gt;Don’t worry about those error messages, it works anyway&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Then add a CNAME record pointing your subdomain to default Heroku URL in your Cloudflare DNS dashboard:&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;center-image&quot; alt=&quot;Cloudflare CNAME DNS setting&quot; src=&quot;/assets/dns_cname-b7b3a6920efccabd626557a3d4fa897c1c696bb4dbb773950fbc1e542156a2f8.png&quot; /&gt;
+&lt;span class=&quot;annotation&quot;&gt;Add a CNAME record pointing subdomain to https://[Your app name].herokuapp.com&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Your Heroku app should now be available on your custom domain with full SSL support.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-nginx&quot;&gt;Setup NGINX&lt;/h2&gt;
+
+&lt;p&gt;If you are using a custom hosting infrastructure then &lt;a href=&quot;https://nginx.org/en/&quot; target=&quot;_blank&quot;&gt;NGINX&lt;/a&gt; could be your front-end server. In this case you can still hook free SSL with a custom domain.&lt;/p&gt;
+
+&lt;p&gt;Start with pointing your domain to your server’s IP using an A DNS record. Next, check out two detailed articles on Cloudflare support explaining how to complete the setup:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://support.cloudflare.com/hc/en-us/articles/115000479507&quot; target=&quot;_blank&quot;&gt;Creating and managing certificates with Origin CA&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://support.cloudflare.com/hc/en-us/articles/217471977&quot; target=&quot;_blank&quot;&gt;How to install an Origin CA certificate in NGINX&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;final-remarks&quot;&gt;Final remarks&lt;/h2&gt;
+
+&lt;p&gt;Keep in mind that when working with DNS and SSL configuration you probably will run into some caching related issues. I usually use &lt;a href=&quot;https://www.whatsmydns.net/&quot; target=&quot;_blank&quot;&gt;DNS Propagation Checker&lt;/a&gt; to see if changes have already been applied. Still, some of the settings could be cached locally on your computer. On macOS running these commands could help:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;killall &lt;span class=&quot;nt&quot;&gt;-HUP&lt;/span&gt; mDNSResponder
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;killall mDNSResponderHelper
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dscacheutil &lt;span class=&quot;nt&quot;&gt;-flushcache&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If not then you could check if it works on different browsers or your mobile device. Rule of the thumb, if it should work but it still doesn’t I just leave it for a couple of hours and then check again ¯\&lt;em&gt;(ツ)&lt;/em&gt;/¯.&lt;/p&gt;
+
+&lt;p&gt;There’s also &lt;a href=&quot;https://letsencrypt.org/&quot; target=&quot;_blank&quot;&gt;Let’s Encrypt&lt;/a&gt; you can use to setup free SSL. So far Cloudflare has always been good enough for what I needed.&lt;/p&gt;
+
+&lt;p&gt;Obviously, you can use all of those tips for top-level domains as well. Hope it helps you shave a few bucks off what you spend on your online projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; I’m not a web security expert. I would not recommend using these tips for a project with bank-level security requirements. Let me know in the comments if you notice some security loopholes in those settings.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 22 Jan 2018 10:00:00 +0100</pubDate>
+        <link>http://localhost:4000/setup-multiple-domains-with-free-ssl-from-cloudflare</link>
+        <guid isPermaLink="true">http://localhost:4000/setup-multiple-domains-with-free-ssl-from-cloudflare</guid>
+      </item>
+    
+      <item>
+        <title>Productive Laziness - Optimize your Shell Workflow</title>
+        <description>&lt;p&gt;I would like to share a simple productivity tip that probably helped me save thousands of keystrokes so far.&lt;/p&gt;
+
+&lt;p&gt;I’ve been using this technique for a while now to maximize my laziness (&lt;em&gt;productivity&lt;/em&gt;) during work and so, recently I wrapped it up in an easy to use &lt;a href=&quot;https://github.com/pawurb/lazyme&quot; class=&quot;link&quot; target=&quot;_blank&quot;&gt;Ruby Gem&lt;/a&gt;. It simply counts your shell commands and displays them sorted by usage frequency. Using it is as simple as typing:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;lazyme
+lazyme&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This is how my most used commands look now. Top hits are usually a good candidate for new aliases:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;+---------------------------------------------+-------+
+|                     Lazyme                          |
++---------------------------------------------+-------+
+|...                                          | ...   |
+| ei                                          | 21    |
+| gpstg                                       | 22    |
+| gstp                                        | 23    |
+| zs                                          | 28    |
+| s .                                         | 30    |
+| zrr                                         | 32    |
+| gpshh                                       | 60    |
+| rss                                         | 70    |
+| c                                           | 75    |
+| gd                                          | 107   |
+| o .                                         | 123   |
+| gst                                         | 130   |
+| ls                                          | 179   |
+| gl                                          | 310   |
+| gp                                          | 445   |
+| gds                                         | 540   |
+| gaa                                         | 817   |
+| g                                           | 3365  |
++---------------------------------------------+-------+
+| Command                                     | Count |
++---------------------------------------------+-------+&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;With almost all top commands being aliases, I am now sure I work as lazily as possible.&lt;/p&gt;
+
+&lt;p&gt;I know that some developers don’t like using aliases because they worry that they might keep forgetting them. To fix this problem, I have a special alias &lt;code class=&quot;highlighter-rouge&quot;&gt;aliases&lt;/code&gt; which displays a list of all my aliases (btw &lt;code class=&quot;highlighter-rouge&quot;&gt;gr&lt;/code&gt; is an alias for &lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;aliases | gr aliases
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'aliases'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'cat ~/.dotfiles/settings/shell/aliases.sh'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Some say that if you get used to using aliases too much you might have a problem with working efficiently on remote servers which lack your custom config settings. I solved this problem with a couple of aliases which upload a list of my most essential aliases to remote servers (&lt;code class=&quot;highlighter-rouge&quot;&gt;ubash&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;uvim&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ugit&lt;/code&gt;). Just be careful not to overwrite some important settings if you don’t own the server. Whether you want to sacrifice your productivity when working locally, to avoid some possible problems when working on remote server is entirely up to you.&lt;/p&gt;
+
+&lt;p&gt;You can set aliases and helper functions by adding following lines into your &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;.zshrc&lt;/code&gt; files:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'grep — color'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'git status'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gaa&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'git add . -A'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;gm&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$*&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I, therefore, encourage you to show your fingers some love and treat them to a couple of nice aliases.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 Jan 2018 16:26:52 +0100</pubDate>
+        <link>http://localhost:4000/productive-laziness-optimize-your-shell-workflow</link>
+        <guid isPermaLink="true">http://localhost:4000/productive-laziness-optimize-your-shell-workflow</guid>
+      </item>
+    
+  </channel>
+</rss>
