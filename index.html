@@ -1,0 +1,76 @@
+---
+layout: default
+preview_image: pawel-tag.jpg
+---
+{% assign posts_count = paginator.posts | size %}
+
+{% assign index = 0 %}
+
+<script>
+
+(function () {
+
+  var urls = []
+  var preloaded = []
+
+  {% for post in paginator.posts %}
+      {% assign index=index | plus:1 %}
+      var index = {{ index }}
+      var postUrl = "{{ post.url }}"
+      urls.push(postUrl)
+  {% endfor %}
+
+  preloaded.push(urls[0])
+  preloaded.push(urls[1])
+
+  var preload = function(url) {
+    if(url === undefined) {
+      return;
+    }
+
+    if(preloaded.includes(url)) {
+      return;
+    }
+
+    var preloadLink = document.createElement("link");
+    preloadLink.setAttribute("rel", "prefetch");
+    preloadLink.setAttribute("href", url);
+    document.getElementsByTagName("head")[0].appendChild(preloadLink);
+    preloaded.push(url);
+  }
+
+  window.onscroll = function() {
+    var preloadIndex = parseInt(window.scrollY / 300)
+    preload(urls[preloadIndex]);
+  }
+})();
+
+</script>
+
+<div class="home">
+  {% if posts_count > 0 %}
+    {% include pagination.html %}
+    <div class="posts">
+      {% for post in paginator.posts %}
+        <div class="post py3">
+          <p class="post-meta"><span class='theme-color'>{{ post.date | date: site.date_format }} &nbsp;</span><span class="disqus-comment-count" data-disqus-identifier="{{ post.id }}"></span></p>
+          <a href="{{ post.url | prepend: site.baseurl }}" class="post-link"><h2 class="h1 post-title">{{ post.title }}</h2></a>
+          <span class="post-summary">
+            {% if post.summary %}
+              {{ post.summary }}
+            {% else %}
+              {{ post.excerpt }}
+            {% endif %}
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+
+    <br>
+    {% include pagination.html %}
+  {% else %}
+    <h1 class='center'>{{ site.text.index.coming_soon }}</h1>
+  {% endif %}
+</div>
+
+<script id="dsq-count-scr" src="//{{ site.disqus_shortname }}.disqus.com/count.js" async></script>

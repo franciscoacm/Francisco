@@ -1,0 +1,124 @@
+# Site settings
+head_title: Paweł U. | Ruby on Rails Web Development, Consultant Full Stack Blog
+email:       contact@pawelurbanek.com
+author:      Paweł Urbanek
+description: Paweł Urbanek - Full Stack web development, consultant, specializing in Ruby on Rails and JavaScript. Experienced in building scalable and performant APIs for startups and refactoring legacy codebases. Blogging about web developer stuff.
+keywords: Ruby on Rails, JavaScript, full stack,
+ consultant, web development, remote developer, startup, performance, optimization, blogger, blog, blogging, SEO
+baseurl:     ""
+url:         "https://pawelurbanek.com"
+date_format: "%b %-d, %Y"
+structured_date_format: '%Y-%m-%d'
+grammarly_link: https://grammarly.com
+digital_ocean_link: https://www.digitalocean.com/
+abot_link: https://abot.app
+email_subscription_link: https://mailchimp.com/
+header_pages:
+ - pages/home.html
+ - pages/about.md
+ - pages/jekyll-seo-template.html
+
+# Google services
+google_verification:
+# Use either direct GA implementation or set up GTM account
+# - using both will skew your data (leave blank to not use at all)
+google_tag_manager:
+
+# Optional features
+animated:             false
+show_post_footers:    true
+show_social_icons:    true
+# Preview image for social media aka og:image and twitter:image
+post_preview_image: false
+
+# Disqus post comments
+# (leave blank to disable Disqus)
+disqus_shortname: pawelurbanek
+
+# Social icons
+github_username: pawurb
+twitter_username: _pawurb
+linkedin_username:
+medium_id:
+flattr_button:
+
+# Post sharing icons
+show_sharing_icons: true
+# Change to 'true' to enable individual icons
+share_twitter: true
+share_facebook: true
+
+text:
+  pagination:
+    newer: 'Newer'
+    older: 'Older'
+  share_buttons:
+    text:         'Share:'
+    twitter:      'Share on Twitter'
+    facebook:     'Share on Facebook'
+  post:
+    updated:        'Updated'
+    minute_read:    'minute read'
+    related_posts:  'Related Posts'
+  index:
+    coming_soon: 'Coming soon...'
+  contact:
+    email:    ''
+    content:  ''
+    subject:  'New submission!'
+    submit:   'Send'
+    ajax:
+      sending:  'sending..'
+      sent:     'Message sent!'
+      error:    'Error!'
+  og_locale: 'en_US'
+
+# Build settings
+markdown:     kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+permalink: /:title
+paginate:     9
+sass:
+  style: compressed
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-assets
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - deploy.sh
+  - certificates.tar
+  - app-nginx.conf.sigil
+  - purge.rb
+  - CHECKS
+  - app.json
+  - .env
+  - Rakefile
+  - README.md
+
+defaults:
+  - scope:
+      path: 'files/*.pdf'
+    values:
+      sitemap: false
+  - scope:
+      path: 'build/'
+    values:
+      sitemap: false
+assets:
+  defaults:
+    js: { integrity: false }
+    css: { integrity: false }
+    img: { integrity: false }
+  digest: true
+  sources:
+    - _assets/css
+    - _assets/css/scss
+    - _assets/images/shared
+    - _assets/images/2018-01-08
+    - _assets/images/2018-01-15
+    - _assets/images/2018-01-22
+    - _assets/images/2018-02-23
