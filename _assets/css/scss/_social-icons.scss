@@ -1,0 +1,32 @@
+.social-icons-left, .social-icons-right {
+  text-align: center;
+  float: none;
+}
+
+.social-icons {
+  padding: 0.5em 0 0 0;
+  width: 100%;
+}
+
+.social-icons a.fa {
+  font-size: 1.55em;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 0.1em;
+  margin-left: 10px;
+}
+
+.social-icons a.fa {
+  &:active, &:focus {
+    border-bottom: 0px;
+  }
+}
+
+.social-icons a.fa:hover {
+  opacity: 1;
+}
+
+.social-icons iframe[title=Flattr] {
+  position: relative;
+  top: 0.1em;
+}
