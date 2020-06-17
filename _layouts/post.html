@@ -1,0 +1,181 @@
+---
+layout: default
+---
+
+{% assign minutes = content | strip_html | number_of_words | divided_by: 180 %}
+{% if minutes == 0 %}
+{% assign minutes = 1 %}
+{% endif %}
+<div class='fixed-share-buttons-mobile slide-in-bottom-share-buttons'>
+  <span>Share</span>
+  <a href="https://twitter.com/intent/tweet?text={{ page.title | cgi_escape }}&amp;url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank">
+    <img title="Share on Twitter"
+      src="{{ site.url }}{{ assets['twitter.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['twitter.png'].digest_path }} 1x, {{ site.url }}{{ assets['twitter@2x.png'].digest_path }} 2x"
+    >
+  </a>
+  <a href="https://facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank">
+    <img title="Share on Facebook"
+      src="{{ site.url }}{{ assets['facebook.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['facebook.png'].digest_path }} 1x, {{ site.url }}{{ assets['facebook@2x.png'].digest_path }} 2x"
+    >
+  </a>
+
+   <a href="http://www.linkedin.com/shareArticle?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank">
+      <img title="Share on LinkedIn"
+      src="{{ site.url }}{{ assets['linkedin.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['linkedin.png'].digest_path }} 1x, {{ site.url }}{{ assets['linkedin@2x.png'].digest_path }} 2x"
+      >
+   </a>
+
+   <a href="http://www.tumblr.com/share/link?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;name={{ page.title | cgi_escape }}" rel="nofollow" target="_blank">
+      <img title="Share on Tumblr"
+      src="{{ site.url }}{{ assets['tumblr.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['tumblr.png'].digest_path }} 1x, {{ site.url }}{{ assets['tumblr@2x.png'].digest_path }} 2x"
+      >
+   </a>
+</div>
+
+<div class='fixed-share-buttons-desktop slide-in-left-share-buttons'>
+  <span>Share</span>
+  <br>
+  <a href="https://twitter.com/intent/tweet?text={{ page.title | cgi_escape }}&amp;url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank">
+    <img title="Share on Twitter"
+      src="{{ site.url }}{{ assets['twitter.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['twitter.png'].digest_path }} 1x, {{ site.url }}{{ assets['twitter@2x.png'].digest_path }} 2x"
+    >
+  </a>
+  <br>
+  <a href="https://facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank">
+    <img title="Share on Facebook"
+      src="{{ site.url }}{{ assets['facebook.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['facebook.png'].digest_path }} 1x, {{ site.url }}{{ assets['facebook@2x.png'].digest_path }} 2x"
+    >
+  </a>
+  <br>
+  <a href="http://www.linkedin.com/shareArticle?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;title={{ page.title | cgi_escape }}" rel="nofollow" target="_blank">
+      <img title="Share on LinkedIn"
+      src="{{ site.url }}{{ assets['linkedin.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['linkedin.png'].digest_path }} 1x, {{ site.url }}{{ assets['linkedin@2x.png'].digest_path }} 2x"
+      >
+   </a>
+   <br>
+   <a href="http://www.tumblr.com/share/link?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;name={{ page.title | cgi_escape }}" rel="nofollow" target="_blank">
+      <img title="Share on Tumblr"
+      src="{{ site.url }}{{ assets['tumblr.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['tumblr.png'].digest_path }} 1x, {{ site.url }}{{ assets['tumblr@2x.png'].digest_path }} 2x"
+      >
+   </a>
+</div>
+
+<div class='fixed-mailing-button'>
+  <a href="{{ site.email_subscription_link }}" rel="nofollow" target='_blank'>Subscribe</a>
+  <div class='hidden-bonus'>
+    and get a
+    <a target='_blank' href="/jekyll-seo-template">free SEO template</a>
+  </div>
+</div>
+
+<div class="fixed-bottom-navigation left-side pagination">
+  {% if page.previous.url %}
+    <div class='hidden-title'> {{ page.previous.title }} </div>
+    <a class="left navigation-item" href="{{page.previous.url}}">&laquo; Prev</a>
+  {% endif %}
+</div>
+
+<div class="fixed-bottom-navigation right-side pagination">
+  {% if page.next.url %}
+    <div class='hidden-title'> {{ page.next.title }} </div>
+    <a class="right navigation-item" href="{{page.next.url}}"> Next &raquo;</a>
+  {% endif %}
+</div>
+
+<div class="post-header mb2">
+  <h1 id="#top">{{ page.title }}</h1>
+  <span class="post-meta theme-color">{{ page.date | date: site.date_format }}</span><br>
+  {% if page.update_date %}
+    <span class="post-meta">{{ site.text.post.updated }}: {{ page.update_date | date: site.date_format }}</span><br>
+  {% endif %}
+  <span class="post-meta small">
+  {% if page.minutes %}
+    {{ page.minutes }} {{ site.text.post.minute_read }}
+  {% else %}
+    {{ minutes }} {{ site.text.post.minute_read }}
+  {% endif %}
+  </span>
+</div>
+
+<article class="post-content">
+
+  {% if page.thumb_image %}
+    <div class='main-image-placeholder'>
+      {% asset "{{ page.thumb_image }}" class="center-image js-async-img" title="{{ page.main_image_description }}" alt="{{ page.main_image_description }}" data-src="{{ site.url }}{{ assets[page.preview_image].digest_path }}" %}
+    </div>
+  {% else %}
+    <h2>Missing main image</h2>
+  {% endif %}
+
+<div class="mobile-top page-navigation">
+  {% if page.previous.url %}
+    <a class="prev navigation-link" href="{{page.previous.url}}">&laquo; {{page.previous.title }}</a>
+
+  {% else %}
+    <a class="prev" ></a>
+  {% endif %}
+  {% if page.next.url %}
+    <a class="right next navigation-link" href="{{page.next.url}}"> {{page.next.title }} &raquo;</a>
+  {% endif %}
+</div>
+
+  <br>
+
+  {{ content }}
+</article>
+
+{% include post_footer.html %}
+
+<div id="disqus_thread"></div>
+
+{% include disqus.html %}
+
+<script>
+  (function () {
+    var removeClass = function(el, className) {
+      if (el.classList) {
+        el.classList.remove(className);
+      } else
+        el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    };
+
+    var addClass = function(el, className) {
+      if (el.classList) {
+        el.classList.add(className);
+      } else {
+        el.className += ' ' + className;
+      }
+    };
+
+    window.onscroll = function() {
+      var el = document.getElementsByClassName('fixed-mailing-button')[0];
+      if(el === undefined) {
+        return
+      }
+
+      var y = window.scrollY
+      if (y < 1000) {
+        addClass(el, 'fade-out');
+        removeClass(el, 'fade-in');
+      }
+
+      if (y > 1800 && window.innerWidth > 980) {
+        addClass(el, 'fade-in');
+        removeClass(el, 'fade-out');
+      }
+
+      if (window.innerWidth < 980) {
+        addClass(el, 'fade-out');
+        removeClass(el, 'fade-in');
+      }
+    };
+  })();
+</script>
