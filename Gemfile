@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "jekyll", "~> 3.7.2"
+gem "jekyll", "~> 3.7.4"
 gem "octopress", '~> 3.0'
 gem "jekyll-assets", '~> 3.0.7'
 gem "uglifier"
