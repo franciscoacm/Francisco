@@ -1,0 +1,19 @@
+<script type="text/javascript">
+  (function () {
+    (function() {
+      Array.prototype.slice.call(
+        document.getElementsByClassName('js-async-img')
+      ).forEach(function(asyncImgNode) {
+        var fullImg = new Image()
+        fullImg.src = asyncImgNode.dataset.src;
+        fullImg.onload = function() {
+          asyncImgNode.classList.remove('js-async-img')
+          asyncImgNode.src = asyncImgNode.dataset.src
+        };
+      });
+    })();
+  })();
+
+</script>
+
+

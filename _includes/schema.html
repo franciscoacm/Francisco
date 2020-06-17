@@ -1,0 +1,52 @@
+{% if page.layout == 'post' %}
+<!-- Google Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type":"WebPage",
+      "@id":"{{ site.url }}{{ page.url }}"
+    },
+    "headline": "{{ page.title }}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}{{ assets[page.preview_image].digest_path }}",
+      "height": 500,
+      "width": 800
+    },
+    "datePublished": "{{ page.date | date: site.structured_date_format }}",
+    "dateModified": "{% if page.last_modified_at %}{{ page.last_modified_at | date: site.structured_date_format }}{% else %}{{ page.date | date: site.structured_date_format }}{% endif %}",
+    "author": {
+      "@type": "Person",
+      "name": "Paweł Urbanek"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PabloWeb Paweł Urbanek",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}{{ assets["pabloweb.jpg"].digest_path }}",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "{{ page.summary }}",
+    "keywords": "{{ page.keywords }}"
+  }
+  </script>
+{% else %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "Paweł Urbanek - Full Stack Blog",
+      "url": "https://pawelurbanek.com",
+      "author": {
+        "@type": "Person",
+        "name": "Paweł Urbanek"
+      },
+      "keywords": "{{ site.keywords }}"
+    }
+  </script>
+{% endif %}

@@ -1,0 +1,23 @@
+<div class="social-icons">
+  <div class="social-icons-right">
+    <a href="https://github.com/{{ site.github_username }}" target="_blank">
+        <img alt="GitHub link"
+        src="{{ site.url }}{{ assets['github.png'].digest_path }}"
+        srcset="{{ site.url }}{{ assets['github.png'].digest_path }} 1x, {{ site.url }}{{ assets['github@2x.png'].digest_path }} 2x"
+        >
+    </a>
+    <a href="https://twitter.com{{ site.twitter_username }}" target="_blank">
+      <img alt="Twitter link"
+      src="{{ site.url }}{{ assets['twitter.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['twitter.png'].digest_path }} 1x, {{ site.url }}{{ assets['twitter@2x.png'].digest_path }} 2x"
+      >
+    </a>
+    <a href="/feed.xml">
+      <img alt="RSS link"
+      src="{{ site.url }}{{ assets['rss.png'].digest_path }}"
+      srcset="{{ site.url }}{{ assets['rss.png'].digest_path }} 1x, {{ site.url }}{{ assets['rss@2x.png'].digest_path }} 2x"
+      >
+    </a>
+  </div>
+</div>
+<div class="clearfix"></div>
